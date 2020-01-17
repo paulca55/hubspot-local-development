@@ -26,7 +26,7 @@ As part of the project's `package.json` the `@hubspot/cms/cli` npm package will 
 
 ### Set up your configuration file
 
-The `hubspot.config.yml` stores your HubSpot API key and Hub ID and is needed to authenticate your HubSpot account access. This is automatically created for you )see below):
+The `hubspot.config.yml` configuration file stores your HubSpot API key and Hub ID and is needed to authenticate your HubSpot account access. This is automatically created for you )see below):
 
 1. In your current working directory run `npx hs init` and follow the on screen prompts to create the `hubspot.config.yml` config file. You can choose API key or OAuth for authentication, HubSpot recommend OAuth as it is more secure but for simplicity we will use API key.
 2. You will be asked to enter a name for your Hub - this name is a **local-only** nickname for the HubSpot account to make it easy to reference when using the tools.
