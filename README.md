@@ -29,16 +29,16 @@ As part of the project's `package.json` the `@hubspot/cms/cli` npm package will 
 The `hubspot.config.yml` configuration file stores your HubSpot API key and Hub ID and is needed to authenticate your HubSpot account access. This is automatically created for you (see below):
 
 1. In your current working directory run `npx hs init` and follow the on screen prompts to create the `hubspot.config.yml` config file. You can choose API key or OAuth for authentication, HubSpot recommend OAuth as it is more secure but for simplicity we will use API key.
-2. You will be asked to enter a name for your Hub - _this name is a **local-only** nickname for the HubSpot account to make it easy to reference when using the tools_.
-3. Next you will be asked for a Hub ID, this is the account you wish to modify files in - _this can be found by logging into your HubSpot dashboard and clicking on your account menu in the top-right corner_.
-4. Enter your API key - _you can log in to HubSpot and [get your API key here](https://app.hubspot.com/l/api-key)_.
+1. You will be asked to enter a name for your Hub - _this name is a **local-only** nickname for the HubSpot account to make it easy to reference when using the tools_.
+1. Next you will be asked for a Hub ID, this is the account you wish to modify files in - _this can be found by logging into your HubSpot dashboard and clicking on your account menu in the top-right corner_.
+1. Enter your API key - _you can log in to HubSpot and [get your API key here](https://app.hubspot.com/l/api-key)_.
 
 _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` file so that it won't be added to your git repo to help keep your API key safe_.
 
 ## Project setup
 
 1. In your current working directory run `npm install` to install all the required npm packages.
-2. Fill in the needed details in the `config.json` file.
+1. Fill in the needed details in the `config.json` file.
 
    `previewUrl` - copy the URL from your browser address bar when you are previewing the web page you want to work on.
 
@@ -50,7 +50,7 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 
    See `config-sample.json` for an example or see below:
 
-```json
+```JSON
 {
   "previewUrl": "https://hubspot-developers-14xe7vi-6718602.hs-sites.com/-temporary-slug-578864d2-02f5-4ez1-8755-95647na959de?hs_preview=FMSqDSoy-24451246628",
   "filesToWatch": ["dist/**"],
