@@ -8,10 +8,10 @@ Features include:
 
 - Sass compiler - _SCSS syntax_.
 - JS compiler - _using Babel_.
-- CSS and JS source maps.
-- Code minification on production build.
-- CSS and JavaScript code linting and formatting. Note that linting is set up for use with a code editor that can display problems/errors, they won't be output to the terminal - _using ESLint, Prettier and Stylelint_.
 - Live reloading of local CSS, JS files which are swapped out for the remote files on HubSpot, no upload/download necessary, for rapid development - _using Browsersync_.
+- Code minification on production build.
+- CSS and JS source maps.
+- CSS and JavaScript code linting and formatting. Note that linting is set up for use with a code editor that can display problems/errors, they won't be output to the terminal - _using ESLint, Prettier and Stylelint_.
 - Deploying files (as draft or published) to HubSpot via the command line - _using Hubspot Local Development Tools_.
 
 ## Prerequisites
@@ -42,29 +42,33 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 1. In your current working directory run `npm install` to install all the required npm packages.
 1. Fill in the needed details in the `config.json` file.
 
-   `previewUrl` - copy the URL from your browser address bar when you are previewing the web page you want to work on.
+   `previewUrl` - copy the **preview URL** from your browser address bar when you are previewing the web page you want to work on. Using the live website URL will not work.
 
    `filesToWatch` - takes an `array` of directories you want to _watch for changes_ for live reloading.
 
-   `serveStatic` - takes an `array` of local paths to serve static files on http://localhost:3000. If a request matches a file in one of these paths then Browsersync will serve it, otherwise it will forward the request on to the proxied live site. This is allows us to mix local assets with remote assets.
+   `serveStatic` - takes an `array` of local paths to serve your static files from.
 
-   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. Please note remote file paths need to be **exactly** as they are seen in the HTML source code.
+   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename instead of a path (i.e. `"replace": "style.css"` will be hosted from `https://localhost:3000/style.css`), see example below. **Important**: remote file paths need to be **exactly** as they are seen in the rendered HTML source code (i.e. 'view source' in the browser not the developer tools).
 
    See `config-sample.json` for an example or see below:
 
-```JSON
+```json
 {
-  "previewUrl": "https://hubspot-developers-14xe7vi-6718602.hs-sites.com/-temporary-slug-578864d2-02f5-4ez1-8755-95647na959de?hs_preview=FMSqDSoy-24451246628",
+  "previewUrl": "http://hubspot-developers-14se7vi-6398652.hs-sites.com/?hs_preview=JdkZYGUZ-24554045089",
   "filesToWatch": ["dist/**"],
   "serveStatic": ["dist", "dist/css", "dist/js", "dist/images"],
   "rewriteRules": [
     {
-      "match": "//cdn2.hubspot.net/hub/6798683/hub_generated/template_assets/4416301597/1679265117029/website-folder/style.min.css",
+      "match": "//cdn2.hubspot.net/hub/4793682/hub_generated/template_assets/24436301497/1579162117021/website-folder/style.min.css",
       "replace": "style.css"
     },
     {
-      "match": "//cdn2.hubspot.net/hub/6798683/hub_generated/template_assets/44452588076/1572188307698/website-folder/scripts.min.js",
+      "match": "//cdn2.hubspot.net/hub/4793682/hub_generated/template_assets/84412586096/1579194026666/website-folder/scripts.min.js",
       "replace": "scripts.js"
+    },
+    {
+      "match": "https://cdn2.hubspot.net/hub/4793682/hubfs/image-01.jpg?width=600&amp;height=600&amp;name=image-01.jpg",
+      "replace": "image.jpg"
     }
   ]
 }
