@@ -1,0 +1,15 @@
+{
+  "previewUrl": "https://hubspot-developers-14xe7vi-6718602.hs-sites.com/-temporary-slug-578864d2-02f5-4ez1-8755-95647na959de?hs_preview=FMSqDSoy-24451246628",
+  "filesToWatch": ["dist/**"],
+  "serveStatic": ["dist", "dist/css", "dist/js", "dist/images"],
+  "rewriteRules": [
+    {
+      "match": "//cdn2.hubspot.net/hub/6798683/hub_generated/template_assets/4416301597/1679265117029/website-folder/style.min.css",
+      "replace": "style.css"
+    },
+    {
+      "match": "//cdn2.hubspot.net/hub/6798683/hub_generated/template_assets/44452588076/1572188307698/website-folder/scripts.min.js",
+      "replace": "scripts.js"
+    }
+  ]
+}
