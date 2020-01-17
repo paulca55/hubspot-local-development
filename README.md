@@ -24,7 +24,7 @@ _Note: you can refer to the [Hubspot Local Development Tools documentation](http
 
 ### Installing the HubSpot CLI tool
 
-As part of the project's `package.json` the `@hubspot/cms/cli` npm package will be installed into the projects developer dependencies, so you don't need to install this yourself.
+As part of the project's `package.json` the `@hubspot/cms/cli` npm package will be installed into the project's developer dependencies, so you don't need to install this yourself.
 
 ### Set up your configuration file
 
@@ -46,9 +46,9 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 
    `filesToWatch` - takes an `array` of directories you want to _watch for changes_ for live reloading.
 
-   `serveStatic` - takes an `array` of local paths to serve your static files from.
+   `serveStatic` - takes an `array` of local paths you can serve your static files from.
 
-   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename instead of a path (i.e. `"replace": "style.css"` will be hosted from `https://localhost:3000/style.css`), see example below. **Important**: remote file paths need to be **exactly** as they are seen in the rendered HTML source code (i.e. 'view source' in the browser not the developer tools).
+   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `"replace": "style.css"` will be hosted from `https://localhost:3000/style.css`), see example below. **Important**: remote file paths need to be **exactly** as they are seen in the rendered HTML source code (i.e. 'view source' in the browser).
 
    See `config-sample.json` for an example or see below:
 
