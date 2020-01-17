@@ -18,7 +18,7 @@ Features include:
 
 ## Setting up HubSpot Local Development Tools
 
-_Note: you can refer to the [Hubspot Local Development Tools documentation](https://designers.hubspot.com/docs/tools/local-development)_ for more information.
+_Note: you can refer to the [Hubspot Local Development Tools documentation](https://designers.hubspot.com/docs/tools/local-development) for more information._
 
 ### Installing the HubSpot CLI tool
 
