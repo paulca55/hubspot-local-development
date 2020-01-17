@@ -2,7 +2,7 @@
 
 The purpose of this project was to make life easier when working on CSS and JavaScript files when developing HubSpot websites, with a focus on a modern workflow.
 
-For part of this process we will be using the [HubSpot Local Development Tools](https://designers.hubspot.com/docs/tools/local-development) (currently in beta) for downloading/uploading files via the command line. This CLI tool can also be used to work with templates and modules but this isn't what I'm focussing on with this project.
+For part of this process we will be using the [HubSpot Local Development Tools](https://designers.hubspot.com/docs/tools/local-development) (currently in beta) for downloading/uploading files via the command line. This CLI tool can also be used to work with templates and modules but this isn't what I'm focusing on with this project.
 
 Features include:
 
