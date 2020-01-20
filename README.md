@@ -69,7 +69,7 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
     },
     {
       "match": "https://cdn2.hubspot.net/hub/4793682/hubfs/image-01.jpg?width=600&amp;height=600&amp;name=image-01.jpg",
-      "replace": "image.jpg"
+      "replace": "image-01.jpg"
     }
   ]
 }
