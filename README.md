@@ -15,6 +15,8 @@ Features include:
 - CSS and JavaScript code linting and formatting. Note that linting is set up for use with a code editor that can display problems/errors, they won't be output to the terminal - _using ESLint, Prettier and Stylelint_.
 - Deploying files to HubSpot, as draft or published, via the command line - _using Hubspot Local Development Tools_.
 
+_Note: this project was based around the ideas of a tool created by [Ryan Absalom](https://github.com/Absanater). Feel free to check out [Ryan's HubSpot local development tool](https://github.com/Absanater/hubspot-frontend-local) which may fit your needs better._
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org) must be installed - _please note only Node `v10.0.0` has been tested_.
