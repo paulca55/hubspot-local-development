@@ -91,28 +91,46 @@ Now that you have installed the required npm packages and configured the `config
 
 ### Uploading files to HubSpot
 
-Once you are ready to upload your files to HubSpot you can do this via the HubSpot CLI tool (i.e. `npx hs upload <src> <dest>`)
+Once you are ready to upload your files to HubSpot you need to get them ready for production. The following command will minify your files, remove source maps and optimise your images.
+
+```
+npm run build
+```
+
+You can then upload your files via the HubSpot CLI tool (i.e. `npx hs upload <src> <dest>`), see below for instructions.
 
 #### Uploading all your production files
 
 The following command will upload all the folders/files from **inside** the `dist` folder to a folder in HubSpot called `website`. If the destination folder doesn't already exist it will be created.
 
-`npx hs upload dist website`
+```
+npx hs upload dist website
+```
 
 #### Uploading a single production file
 
 The following command will upload the specified file to the specified destination. If the file already exists it will be overwritten.
 
-`npx hs upload dist/css/style.css website/css/style.css`
+```
+npx hs upload dist/css/style.css website/css/style.css
+```
 
 #### Upload modes
 
 Files are uploaded to HubSpot as **published** by default, to change this to **draft** you need to add the `--mode=draft` flag.
 
-Example 1: `npx hs upload --mode=draft dist website`
+Example 1:
 
-Example 2: `npx hs upload --mode=draft dist/css/style.css website/css/style.css`
+```
+npx hs upload --mode=draft dist website
+```
+
+Example 2:
+
+```
+npx hs upload --mode=draft dist/css/style.css website/css/style.css
+```
 
 ### Things to keep in mind
 
-- The `/src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders othwerise the build tools will fail.
+- The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders othwerise the build tools will fail.
