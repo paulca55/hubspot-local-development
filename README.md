@@ -143,4 +143,4 @@ npx hs filemanager upload dist/images website
 
 ### Things to keep in mind
 
-- The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders othwerise the build tools will fail.
+- The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders, otherwise the build tools will fail.
