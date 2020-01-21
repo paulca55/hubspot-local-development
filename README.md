@@ -131,6 +131,16 @@ Example 2:
 npx hs upload --mode=draft dist/css/style.css website/css/style.css
 ```
 
+### Uploading local images to the HubSpot File Manager
+
+You can upload your local images files to the File Manager via the HubSpot CLI tool (i.e. `npx hs filemanager upload <src> <dest>`).
+
+The example below will upload all images from `dist/images` and upload them to a folder in the File Manager called `website`.
+
+```
+npx hs filemanager upload dist/images website
+```
+
 ### Things to keep in mind
 
 - The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders othwerise the build tools will fail.
