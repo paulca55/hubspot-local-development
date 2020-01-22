@@ -99,6 +99,8 @@ npm run build
 
 You can then upload your files via the HubSpot CLI tool (i.e. `npx hs upload <src> <dest>`), see below for instructions.
 
+_**Important**: the `images` folder will not be uploaded because it has been added to the `.hsignore` file. Any folder or file you do not wish be uploaded should be specified in the `.hsignore` file._
+
 #### Uploading all your production files
 
 The following command will upload all the folders/files from **inside** the `dist` folder to a folder in HubSpot called `website`. If the destination folder doesn't already exist it will be created.
