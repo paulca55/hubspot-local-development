@@ -45,7 +45,7 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 1. In your current working directory run `npm install` to install all the required npm packages.
 1. Fill in the needed details in the `config.json` file.
 
-   `previewUrl` - copy the **preview URL** from your browser address bar when you are previewing the web page you want to work on. Using the live website URL will not work.
+   `previewUrl` - copy the **preview URL** from your browser address bar when you are previewing the **web page** you want to work on. Using the template preview URL or live website URL will not work.
 
    `filesToWatch` - takes an `array` of directories you want to _watch for changes_ for live reloading.
 
@@ -144,4 +144,4 @@ npx hs filemanager upload dist/images website
 ### Things to keep in mind
 
 - The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders, otherwise the build tools will fail.
-- Every time you upload a file to HubSpot it will be given a new URL from trhe CDN. For example, if you uploaded and replaced your `style.css` file then you'd need to update the URL in the `config.json` if you want to work on that file locally.
+- Every time you upload a file to HubSpot it will be given a new URL from the CDN. For example, if you uploaded and replaced your `style.css` file then you'd need to update the URL in the `config.json` if you want to work on that file locally.
