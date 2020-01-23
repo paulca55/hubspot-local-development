@@ -1,6 +1,6 @@
 # HubSpot Local Development (CSS, JavaScript and Images)
 
-_**Disclaimer**: this is not an official HubSpot project and is in no way affiliated to HubSpot._
+_**Disclaimer**: this is not an official HubSpot project and is in no way affiliated with HubSpot._
 
 The purpose of this project was to make life easier when working on CSS and JavaScript files when developing HubSpot websites, with a focus on a modern workflow.
 
