@@ -146,4 +146,4 @@ npx hs filemanager upload dist/images website
 ### Things to keep in mind
 
 - The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders, otherwise the build tools will fail.
-- Every time you upload a file to HubSpot it will be given a new URL from the CDN. For example, if you uploaded and replaced your `style.css` file then you'd need to update the URL in the `config.json` if you want to work on that file locally.
+- Each time you upload a file to HubSpot it will be given a new URL from the CDN. For example, if you uploaded and replaced your `style.css` file then you'd need to update the URL in the `config.json` if you want to work on that file locally.
