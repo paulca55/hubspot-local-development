@@ -159,6 +159,10 @@ npx hs filemanager upload dist/images website
 
 ### [0.0.2] - 2020-01-29
 
+#### Fixed
+
+- CSS source maps now working properly in browser dev tools.
+
 #### Changed
 
 - You can now run `npm run build:dev` initially at the start of the project, then in future you can run `npm start` to watch your files and automatically open the browser with live reloading. This means you don't have to wait for the whole build process so you can quickly get back to work.
