@@ -162,7 +162,7 @@ npx hs filemanager upload dist/images website
 #### Changed
 
 - You can now run `npm run build:dev` initially at the start of the project, then in future you can run `npm start` to watch your files and automatically open the browser with live reloading. This means you don't have to wait for the whole build process so you can quickly get back to work.
-- You no longer need to enter the whole HubSpot file URL for the files you wish to swap out for your local ones. I'm now using a regex for the rewrites so as long as your main CSS file is called `style.css` and your main JS file is called `scripts.js` you don't need to worry about it. This also now means you can upload files to HubSpot and don't need to worry about when HubSpot change the file paths (they do this for caching reasons).
+- You no longer need to enter the whole HubSpot file URL for the files you wish to swap out for your local ones. I'm now using a regex for the rewrites so as long as your main CSS file is called `style.css` and your main JS file is called `scripts.js` you don't need to worry about it. This also means you can upload files to HubSpot and you don't need to worry about when HubSpot changes the file paths (they do this for caching reasons).
 
 ### [0.0.1] - 2020-01-23
 
