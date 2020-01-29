@@ -21,7 +21,7 @@
     "watch:css": "onchange 'src/scss/**/*.scss' -- run-s css:dev",
     "watch:js": "onchange 'src/js/**/*.js' -- run-s scripts:dev",
     "watch:images": "onchange 'src/images' -- run-s images",
-    "start": "npm-run-all build:dev --parallel server watch:* "
+    "start": "run-p server watch:*"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.4",

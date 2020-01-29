@@ -2,9 +2,11 @@
 
 _**Disclaimer**: this is not an official HubSpot project and is in no way affiliated with HubSpot._
 
+![version](https://img.shields.io/badge/version-0.0.2-blue)
+
 The purpose of this project was to make life easier when working on CSS and JavaScript files when developing HubSpot websites, with a focus on a modern workflow.
 
-For part of this process we will be using the [HubSpot Local Development Tools](https://designers.hubspot.com/docs/tools/local-development) (currently in beta) for downloading/uploading files via the command line. This CLI tool can also be used to work with templates and modules but this isn't what I'm focusing on with this project.
+For part of this process we will be using the [HubSpot Local Development Tools](https://designers.hubspot.com/docs/tools/local-development) for downloading/uploading files via the command line. This CLI tool can also be used to work with templates and modules but this isn't what I'm focusing on with this project.
 
 Features include:
 
@@ -45,7 +47,7 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 ## Project setup
 
 1. In your current working directory run `npm install` to install all the required npm packages.
-1. Fill in the needed details in the `config.json` file.
+1. Fill in the needed details in the `config.js` file.
 
    `previewUrl` - copy the **preview URL** from your browser address bar when you are previewing the **web page** you want to work on. Using the template preview URL or live website URL will not work.
 
@@ -53,43 +55,47 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 
    `serveStatic` - takes an `array` of local paths you can serve your static files from.
 
-   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `"replace": "style.css"` will be hosted from `https://localhost:3000/style.css`), see example below. **Important**: remote file paths need to be **exactly** as they are seen in the rendered HTML source code (i.e. 'view source' in the browser).
+   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `"replace": "style.css"` will be hosted from `https://localhost:3000/style.css`), see example below..
 
-   See `config-sample.json` for an example or see below:
+   See `config-sample.js` for an example or see below:
 
-```json
-{
-  "previewUrl": "http://hubspot-developers-14se7vi-6398652.hs-sites.com/?hs_preview=JdkZYGUZ-24554045089",
-  "filesToWatch": ["dist/**"],
-  "serveStatic": ["dist", "dist/css", "dist/js", "dist/images"],
-  "rewriteRules": [
+```js
+const config = {
+  previewUrl:
+    'http://hubspot-developers-14se7vi-6398652.hs-sites.com/?hs_preview=JdkZYGUZ-24554045089',
+  filesToWatch: ['dist/**'],
+  serveStatic: ['dist', 'dist/css', 'dist/js', 'dist/images'],
+  rewriteRules: [
     {
-      "match": "//cdn2.hubspot.net/hub/4793682/hub_generated/template_assets/24436301497/1579162117021/website-folder/style.min.css",
-      "replace": "style.css"
+      match: /\/\/(.*).hubspot(.*)style.min.css/g,
+      replace: 'style.css',
     },
     {
-      "match": "//cdn2.hubspot.net/hub/4793682/hub_generated/template_assets/84412586096/1579194026666/website-folder/scripts.min.js",
-      "replace": "scripts.js"
+      match: /\/\/(.*).hubspot(.*)scripts.min.js/g,
+      replace: 'scripts.js',
     },
     {
-      "match": "https://cdn2.hubspot.net/hub/4793682/hubfs/image-01.jpg?width=600&amp;height=600&amp;name=image-01.jpg",
-      "replace": "image-01.jpg"
-    }
-  ]
-}
+      match: /\/\/(.*).hubspot(.*)image.png/g,
+      replace: 'image.png',
+    },
+  ],
+};
+
+module.exports = config;
 ```
 
 ## Typical workflow
 
-Now that you have installed the required npm packages and configured the `config.json` file you are ready to start local development!
+Now that you have installed the required npm packages and configured the `config.js` file you are ready to start local development!
 
 1. Firstly, set up your SCSS, JS and images for your project in the `src` folder.
-1. In your current working directory run `npm start` and this will:
+1. In your current working directory run `npm run build:dev` and this will:
    - Create a `dist` folder for the files you'll upload to HubSpot.
    - Compile your SCSS and JS with inline sourcemaps.
    - Optimise your images.
+1. Now, in future, you can run `npm start` before you start working and this will:
    - Open your specified HubSpot preview page in your browser with any local file overrides you have configured.
-1. As you make code edits and save your changes the browser will refresh automatically.
+   - Watch your files for changes and automatically refresh the browser (live reloading).
 
 ### Uploading files to HubSpot
 
@@ -101,7 +107,7 @@ npm run build
 
 You can then upload your files via the HubSpot CLI tool (i.e. `npx hs upload <src> <dest>`), see below for instructions.
 
-_**Important**: the `images` folder will not be uploaded because it has been added to the `.hsignore` file. Any folder or file you do not wish be uploaded should be specified in the `.hsignore` file._
+_**Important**: the `images` folder will not be uploaded because it has been added to the `.hsignore` file. Any folder or file you do not wish be uploaded should be specified in the `.hsignore` file. However, if you wish to upload images to the Design Manager, for images you don't want to be available in HubSpot Files you can take `images` out of the `.hsignore` file. You can then reference to these files in your HUBL templates with `{{ get_asset_url('/images/image.png') }}`._
 
 #### Uploading all your production files
 
@@ -145,7 +151,19 @@ The example below will upload all images from `dist/images` and upload them to a
 npx hs filemanager upload dist/images website
 ```
 
-### Things to keep in mind
+## Things to keep in mind
 
 - The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders, otherwise the build tools will fail.
-- Each time you upload a file to HubSpot it will be given a new URL from the CDN. For example, if you uploaded and replaced your `style.css` file then you'd need to update the URL in the `config.json` if you want to work on that file locally.
+
+## Changelog
+
+### [0.0.2] - 2020-01-29
+
+#### Changed
+
+- You can now run `npm run build:dev` initially at the start of the project, then in future you can run `npm start` to watch your files and automatically open the browser with live reloading. This means you don't have to wait for the whole build process so you can quickly get back to work.
+- You no longer need to enter the whole HubSpot file URL for the files you wish to swap out for your local ones. I'm now using a regex for the rewrites so as long as your main CSS file is called `style.css` and your main JS file is called `scripts.js` you don't need to worry about it. This also now means you can upload files to HubSpot and don't need to worry about when HubSpot change the file paths (they do this for caching reasons).
+
+### [0.0.1] - 2020-01-23
+
+- Initial release.

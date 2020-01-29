@@ -1,6 +1,0 @@
-{
-  "previewUrl": "",
-  "filesToWatch": ["dist/**"],
-  "serveStatic": ["dist", "dist/css", "dist/js", "dist/images"],
-  "rewriteRules": []
-}
