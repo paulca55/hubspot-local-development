@@ -2,7 +2,7 @@
 
 _**Disclaimer**: this is not an official HubSpot project and is in no way affiliated with HubSpot._
 
-![version](https://img.shields.io/badge/version-0.0.2-blue)
+![version](https://img.shields.io/badge/version-0.0.3-blue)
 
 The purpose of this project was to make life easier when working on CSS and JavaScript files when developing HubSpot websites, with a focus on a modern workflow.
 
@@ -15,7 +15,7 @@ Features include:
 - Live reloading of local CSS, JS files which are swapped out for the remote files on HubSpot, no upload/download necessary, for rapid development - _using Browsersync_.
 - Code minification - _on production builds only_.
 - Image optimisation.
-- CSS and JS inline source maps - _on development builds only, not production_.
+- CSS inline source maps - _on development builds only, not production. No JS sourcemaps yet, sorry_.
 - CSS and JavaScript code linting and formatting. Note that linting is set up for use with a code editor that can display problems/errors, they won't be output to the terminal - _using ESLint, Prettier and Stylelint_.
 - Deploying files to HubSpot, as draft or published, via the command line - _using Hubspot Local Development Tools_.
 
@@ -156,6 +156,12 @@ npx hs filemanager upload dist/images website
 - The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders, otherwise the build tools will fail.
 
 ## Changelog
+
+### [0.0.3] - 2020-02-12
+
+#### Added
+
+- JavaScript module bundling.
 
 ### [0.0.2] - 2020-01-29
 
