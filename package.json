@@ -21,9 +21,7 @@
     "watch:css": "onchange 'src/scss/**/*.scss' -- run-s css:dev",
     "watch:js": "onchange 'src/js/**/*.js' -- run-s scripts:dev",
     "watch:images": "onchange 'src/images' -- run-s images",
-    "start": "run-p server watch:*",
-    "uploadcss": "npx hs upload dist/css/style.css website/css/style.css",
-    "uploadjs": "npx hs upload dist/js/scripts.js website/js/scripts.js"
+    "start": "run-p server watch:*"
   },
   "devDependencies": {
     "@hubspot/cms-cli": "^1.0.6",
