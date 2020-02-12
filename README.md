@@ -15,7 +15,7 @@ Features include:
 - Live reloading of local CSS, JS files which are swapped out for the remote files on HubSpot, no upload/download necessary, for rapid development - _using Browsersync_.
 - Code minification - _on production builds only_.
 - Image optimisation.
-- CSS inline source maps - _on development builds only, not production. No JavaScript source maps yet, sorry_.
+- CSS and JavaScript source maps - _on development builds only, not production. Note: CSS source maps are inline and JavaScript sourcemaps are their own file_.
 - CSS and JavaScript code linting and formatting. Note that linting is set up for use with a code editor that can display problems/errors, they won't be output to the terminal - _using ESLint, Prettier and Stylelint_.
 - Deploying files to HubSpot, as draft or published, via the command line - _using Hubspot Local Development Tools_.
 
