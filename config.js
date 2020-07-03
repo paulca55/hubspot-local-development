@@ -1,7 +1,12 @@
 const config = {
   previewUrl: '',
-  filesToWatch: ['dist/**'],
-  serveStatic: ['dist', 'dist/css', 'dist/js', 'dist/images'],
+  filesToWatch: ['./design-tools-files/**'],
+  serveStatic: [
+    './design-tools-files',
+    './design-tools-files/css',
+    './design-tools-files/js',
+    './design-tools-files/images',
+  ],
   rewriteRules: [
     {
       match: /(http(s):\/\/|\/\/)(.*).hubspot(.*)main.min.css/g,

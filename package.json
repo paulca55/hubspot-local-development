@@ -5,18 +5,18 @@
     ">0.25%"
   ],
   "scripts": {
-    "clean": "rimraf ./dist/{css/*,js/*,images/*}",
-    "scss": "node-sass --source-map true -o ./dist/css ./src/scss",
-    "scripts": "parcel build ./src/js/main.js -d ./dist/js --no-minify",
-    "autoprefixer": "postcss -u autoprefixer -m -r ./dist/css/**/*.css ",
-    "images": "imagemin ./src/images/* --out-dir=./dist/images",
+    "clean": "rimraf ./design-tools-files/{css/*,js/*,images/*}",
+    "scss": "node-sass --source-map true -o ./design-tools-files/css ./src/scss",
+    "scripts": "parcel build ./src/js/main.js -d ./design-tools-files/js --no-minify",
+    "autoprefixer": "postcss -u autoprefixer -m -r ./design-tools-files/css/**/*.css ",
+    "images": "imagemin ./src/images/* --out-dir=./design-tools-files/images",
     "server": "node browsersync.js",
     "css": "run-s scss autoprefixer",
     "build": "run-s clean css scripts images",
     "watch:css": "onchange './src/scss/**/*.scss' -- run-s css",
     "watch:js": "onchange './src/js/**/*.js' -- run-s scripts",
     "watch:images": "onchange './src/images' -- run-s images",
-    "hs-watch": "npx hs watch ./dist dist",
+    "hs-watch": "npx hs watch ./design-tools-files hs-portal-folder",
     "start": "run-p server hs-watch watch:*"
   },
   "devDependencies": {
