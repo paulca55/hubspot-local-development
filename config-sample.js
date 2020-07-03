@@ -5,15 +5,15 @@ const config = {
   serveStatic: ['dist', 'dist/css', 'dist/js', 'dist/images'],
   rewriteRules: [
     {
-      match: /(https:\/\/|\/\/)(.*).hubspot(.*)style.min.css/g,
-      replace: 'style.css',
+      match: /(http(s):\/\/|\/\/)(.*).hubspot(.*)main.min.css/g,
+      replace: 'main.css',
     },
     {
-      match: /(https:\/\/|\/\/)(.*).hubspot(.*)scripts.min.js/g,
-      replace: 'scripts.js',
+      match: /(http(s):\/\/|\/\/)(.*).hubspot(.*)main.min.js/g,
+      replace: 'main.js',
     },
     {
-      match: /(https:\/\/|\/\/)(.*).hubspot(.*)image.png/g,
+      match: /(http(s):\/\/|\/\/)(.*).hubspot(.*)image.png/g,
       replace: 'image.png',
     },
   ],

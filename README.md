@@ -55,7 +55,7 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 
    `serveStatic` - takes an `array` of local paths you can serve your static files from.
 
-   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `"replace": "style.css"` will be hosted from `https://localhost:3000/style.css`), see example below..
+   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `replace: 'style.css'` will be hosted from `https://localhost:3000/style.css`), see example below..
 
    See `config-sample.js` for an example or see below:
 
@@ -105,9 +105,9 @@ Once you are ready to upload your files to HubSpot you need to get them ready fo
 npm run build
 ```
 
-You can then upload your files via the HubSpot CLI tool (i.e. `npx hs upload <src> <dest>`), see below for instructions.
+You can then upload your files via the HubSpot CLI tool (i.e. `npx hs upload --portal=DEV <src> <dest>`), see below for instructions.
 
-_**Important**: the `images` folder will not be uploaded because it has been added to the `.hsignore` file. Any folder or file you do not wish be uploaded should be specified in the `.hsignore` file. However, if you wish to upload images to the Design Manager, for images you don't want to be available in HubSpot Files you can take `images` out of the `.hsignore` file. You can then reference to these files in your HUBL templates with `{{ get_asset_url('/images/image.png') }}`._
+_**Note**: Any folder or file you do not wish be uploaded can be specified in the `.hsignore` file._
 
 #### Uploading all your production files
 
