@@ -9,11 +9,11 @@ const config = {
   ],
   rewriteRules: [
     {
-      match: /(http(s):\/\/|\/\/)(.*).hubspot(.*)main.min.css/g,
+      match: /(https?:\/\/|\/\/)(.*).hubspot(.*)main.min.css/g,
       replace: 'main.css',
     },
     {
-      match: /(http(s):\/\/|\/\/)(.*).hubspot(.*)main.min.js/g,
+      match: /(https?:\/\/|\/\/)(.*).hubspot(.*)main.min.js/g,
       replace: 'main.js',
     },
   ],
