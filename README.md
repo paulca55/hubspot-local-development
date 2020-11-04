@@ -1,4 +1,4 @@
-# HubSpot Local Development (CSS, JavaScript and Images)
+# HubSpot local development (CSS, JavaScript and images)
 
 _**Disclaimer**: this is not an official HubSpot project and is in no way affiliated with HubSpot._
 
@@ -12,37 +12,37 @@ Features include:
 
 - Sass compiler - _SCSS syntax_.
 - JS compiler - _using Babel_.
+- JS bundler - _using Parcel_.
 - Live reloading of local CSS, JS files which are swapped out for the remote files on HubSpot, no upload/download necessary, for rapid development - _using Browsersync_.
-- Code minification - _on production builds only_.
+- Code minification.
 - Image optimisation.
-- CSS and JavaScript source maps - _on development builds only, not production. Note: CSS source maps are inline and JavaScript source maps are their own files_.
+- CSS and JavaScript source maps - _the source maps will only work on files served by Browsersync on localhost. CSS and JS files uploaded to HubSpot for production are minified by their servers and the link to the sourcemaps will be removed_.
 - CSS and JavaScript code linting and formatting. Note that linting is set up for use with a code editor that can display problems/errors, they won't be output to the terminal - _using ESLint, Prettier and Stylelint_.
-- Deploying files to HubSpot, as draft or published, via the command line - _using Hubspot Local Development Tools_.
+- Deploying files to HubSpot, as draft or published, via the command line - _using HubSpot Local Development Tools_.
 
-_Note: this project was based around the ideas of a tool created by [Ryan Absalom](https://github.com/Absanater). Feel free to check out [Ryan's HubSpot local development tool](https://github.com/Absanater/hubspot-frontend-local) which may fit your needs better._
+_Note: this project is based around the ideas of a tool created by [Ryan Absalom](https://github.com/Absanater). Feel free to check out [Ryan's HubSpot local development tool](https://github.com/Absanater/hubspot-frontend-local) which may fit your needs better._
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org) must be installed - _please note only Node `v10.0.0` has been tested_.
 
-## Setting up HubSpot Local Development Tools
+## Setting up HubSpot local development tools
 
-_Note: you can refer to the [Hubspot Local Development Tools documentation](https://designers.hubspot.com/docs/tools/local-development) for more information_.
+_Note: you can refer to the [HubSpot Local Development Tools documentation](https://designers.hubspot.com/docs/tools/local-development) for more information_.
 
 ### Installing the HubSpot CLI tool
 
-As part of the project's `package.json` the `@hubspot/cms/cli` npm package will be installed into the project's developer dependencies, so you don't need to install this yourself.
+As part of the project's `package.json` the HubSpot CLI npm package will be installed into the project's developer dependencies, so you don't need to install this yourself.
 
 ### Set up your configuration file
 
-The `hubspot.config.yml` configuration file stores your HubSpot API key and Hub ID and is needed to authenticate your HubSpot account access. This is automatically created for you (see below):
+1. In your current working directory run `npx hs init` in your terminal and follow the on screen prompts to create the `hubspot.config.yml` config file.
+2. Firstly, you’ll be guided to create a personal CMS access key to enable authenticated access to your account via the local development tools. You’ll be prompted to press `Enter` when you’re ready to open the **Personal CMS Access Key** page in your default browser. This page will allow you to view or generate your personal access key, if necessary. Copy your access key and paste it in the terminal.
+3. Next, you’ll enter a name for the account. This name is only seen and used by you, For example, you might use `DEV` if you're using a developer sandbox or `PROD` if you’re using a full customer account. This name will be used when running commands.
 
-1. In your current working directory run `npx hs init` and follow the on screen prompts to create the `hubspot.config.yml` config file. You can choose API key or OAuth for authentication, HubSpot recommend OAuth as it is more secure but for a simpler setup we will use an API key.
-1. You will be asked to enter a name for your Hub - _this name is a **local-only** nickname for the HubSpot account to make it easy to reference when using the tools_.
-1. Next you will be asked for a Hub ID, this is the account you wish to modify files in - _this can be found by logging into your HubSpot dashboard and clicking on your account menu in the top-right corner_.
-1. Enter your API key - _you can log in to HubSpot and [get your API key here](https://app.hubspot.com/l/api-key)_.
+_Note: `hubspot.config.yml` supports multiple portal entries. The easiest way to add more portals after you already have a `hubspot.config.yml` file is to use `npx hs auth`._
 
-_Note: that the `hubspot.config.yml` file has been added to the `.gitignore` file so that it won't be added to your git repo to help keep your API key safe_.
+_Note: the `hubspot.config.yml` file has been added to the `.gitignore` file so that it won't be added to your git repo to help keep your API key safe._
 
 ## Project setup
 
@@ -55,7 +55,7 @@ _Note: that the `hubspot.config.yml` file has been added to the `.gitignore` fil
 
    `serveStatic` - takes an `array` of local paths you can serve your static files from.
 
-   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `replace: 'style.css'` will be hosted from `https://localhost:3000/style.css`), see example below..
+   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `replace: 'main.css'` will be hosted from `https://localhost:3000/main.css`), see example below..
 
    See `config-sample.js` for an example or see below:
 
@@ -67,15 +67,15 @@ const config = {
   serveStatic: ['dist', 'dist/css', 'dist/js', 'dist/images'],
   rewriteRules: [
     {
-      match: /(https:\/\/|\/\/)(.*).hubspot(.*)style.min.css/g,
-      replace: 'style.css',
+      match: /(https?:\/\/|\/\/).*hubspot.+main.min.css/g,
+      replace: 'main.css',
     },
     {
-      match: /(https:\/\/|\/\/)(.*).hubspot(.*)scripts.min.js/g,
-      replace: 'scripts.js',
+      match: /(https?:\/\/|\/\/).*hubspot.+main.min.js/g,
+      replace: 'main.js',
     },
     {
-      match: /(https:\/\/|\/\/)(.*).hubspot(.*)image.png/g,
+      match: /(https?:\/\/|\/\/).*hubspot.+image.png/g,
       replace: 'image.png',
     },
   ],
@@ -89,7 +89,7 @@ module.exports = config;
 Now that you have installed the required npm packages and configured the `config.js` file you are ready to start local development!
 
 1. Firstly, set up your SCSS, JS and images for your project in the `src` folder.
-1. In your current working directory run `npm run build:dev` and this will:
+1. In your current working directory run `npm run build` and this will:
    - Create a `dist` folder for the files you'll upload to HubSpot.
    - Compile your SCSS and JS with inline sourcemaps.
    - Optimise your images.
@@ -99,13 +99,15 @@ Now that you have installed the required npm packages and configured the `config
 
 ### Uploading files to HubSpot
 
-Once you are ready to upload your files to HubSpot you need to get them ready for production. The following command will minify your files, remove source maps and optimise your images.
+Once you are ready to upload your files to HubSpot you need to get them ready for production. The following command will clean out all files from your build folder, minify your files and optimise your images.
 
 ```
 npm run build
 ```
 
 You can then upload your files via the HubSpot CLI tool (i.e. `npx hs upload --portal=DEV <src> <dest>`), see below for instructions.
+
+_**Note**: If you set a top-level `defaultPortal` in your `hubspot.config.yml` file, you can exclude the `--portal` option and your commands will reference that default portal._
 
 _**Note**: Any folder or file you do not wish be uploaded can be specified in the `.hsignore` file._
 
@@ -122,7 +124,7 @@ npx hs upload dist website
 The following command will upload the specified file to the specified destination. If the file already exists it will be overwritten.
 
 ```
-npx hs upload dist/css/style.css website/css/style.css
+npx hs upload dist/css/main.css website/css/main.css
 ```
 
 #### Upload modes
@@ -138,7 +140,7 @@ npx hs upload --mode=draft dist website
 Example 2:
 
 ```
-npx hs upload --mode=draft dist/css/style.css website/css/style.css
+npx hs upload --mode=draft dist/css/main.css website/css/main.css
 ```
 
 ### Uploading local images to the HubSpot File Manager
@@ -171,8 +173,8 @@ npx hs filemanager upload dist/images website
 
 #### Changed
 
-- You can now run `npm run build:dev` initially at the start of the project, then in future you can run `npm start` to watch your files and automatically open the browser with live reloading. This means you don't have to wait for the whole build process so you can quickly get back to work.
-- You no longer need to enter the whole HubSpot file URL for the files you wish to swap out for your local ones. I'm now using a regex for the rewrites so as long as your main CSS file is called `style.css` and your main JS file is called `scripts.js` you don't need to worry about it. This also means you can upload files to HubSpot and you don't need to worry about when HubSpot changes the file paths (they do this for caching reasons).
+- You can now run `npm run build` initially at the start of the project, then in future you can run `npm start` to watch your files and automatically open the browser with live reloading. This means you don't have to wait for the whole build process so you can quickly get back to work.
+- You no longer need to enter the whole HubSpot file URL for the files you wish to swap out for your local ones. I'm now using a regex for the rewrites so as long as your main CSS file is called `main.css` and your main JS file is called `main.js` you don't need to worry about it. This also means you can upload files to HubSpot and you don't need to worry about when HubSpot changes the file paths (they do this for caching reasons).
 
 ### [0.0.1] - 2020-01-23
 
