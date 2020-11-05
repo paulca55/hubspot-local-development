@@ -55,7 +55,7 @@ _Note: the `hubspot.config.yml` file has been added to the `.gitignore` file so 
 
    `serveStatic` - takes an `array` of local paths you can serve your static files from.
 
-   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `replace: 'main.css'` will be hosted from `https://localhost:3000/main.css`), see example below..
+   `rewriteRules` - takes an `array` of `objects` for swapping out HubSpot remote files for your local files. The local files you're using need to have their paths in the `serveStatic` array, then they can simply be referenced by their filename (i.e. `replace: 'styles.css'` will be hosted from `https://localhost:3000/styles.css`), see example below..
 
    See `config-sample.js` for an example or see below:
 
@@ -67,12 +67,12 @@ const config = {
   serveStatic: ['dist', 'dist/css', 'dist/js', 'dist/images'],
   rewriteRules: [
     {
-      match: /(https?:\/\/|\/\/).*hubspot.+main.min.css/g,
-      replace: 'main.css',
+      match: /(https?:\/\/|\/\/).*hubspot.+styles.min.css/g,
+      replace: 'styles.css',
     },
     {
-      match: /(https?:\/\/|\/\/).*hubspot.+main.min.js/g,
-      replace: 'main.js',
+      match: /(https?:\/\/|\/\/).*hubspot.+scripts.min.js/g,
+      replace: 'scripts.js',
     },
     {
       match: /(https?:\/\/|\/\/).*hubspot.+image.png/g,
@@ -124,7 +124,7 @@ npx hs upload dist website
 The following command will upload the specified file to the specified destination. If the file already exists it will be overwritten.
 
 ```
-npx hs upload dist/css/main.css website/css/main.css
+npx hs upload dist/css/styles.css website/css/styles.css
 ```
 
 #### Upload modes
@@ -140,7 +140,7 @@ npx hs upload --mode=draft dist website
 Example 2:
 
 ```
-npx hs upload --mode=draft dist/css/main.css website/css/main.css
+npx hs upload --mode=draft dist/css/styles.css website/css/styles.css
 ```
 
 ### Uploading local images to the HubSpot File Manager
@@ -174,7 +174,7 @@ npx hs filemanager upload dist/images website
 #### Changed
 
 - You can now run `npm run build` initially at the start of the project, then in future you can run `npm start` to watch your files and automatically open the browser with live reloading. This means you don't have to wait for the whole build process so you can quickly get back to work.
-- You no longer need to enter the whole HubSpot file URL for the files you wish to swap out for your local ones. I'm now using a regex for the rewrites so as long as your main CSS file is called `main.css` and your main JS file is called `main.js` you don't need to worry about it. This also means you can upload files to HubSpot and you don't need to worry about when HubSpot changes the file paths (they do this for caching reasons).
+- You no longer need to enter the whole HubSpot file URL for the files you wish to swap out for your local ones. I'm now using a regex for the rewrites so as long as your main CSS file is called `styles.css` and your main JS file is called `scripts.js` you don't need to worry about it. This also means you can upload files to HubSpot and you don't need to worry about when HubSpot changes the file paths (they do this for caching reasons).
 
 ### [0.0.1] - 2020-01-23
 
