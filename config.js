@@ -4,11 +4,11 @@ const config = {
   serveStatic: ['./dist', './dist/css', './dist/js', './dist/images'],
   rewriteRules: [
     {
-      match: /(https?:\/\/|\/\/).*hubspot.+styles.min.css/g,
+      match: /(https?:\/\/|\/\/).*\/hub_generated\/.+styles.min.css/g,
       replace: 'styles.css',
     },
     {
-      match: /(https?:\/\/|\/\/).*hubspot.+scripts.min.js/g,
+      match: /(https?:\/\/|\/\/).*\/hub_generated\/.+scripts.min.js/g,
       replace: 'scripts.js',
     },
   ],

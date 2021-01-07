@@ -67,15 +67,15 @@ const config = {
   serveStatic: ['dist', 'dist/css', 'dist/js', 'dist/images'],
   rewriteRules: [
     {
-      match: /(https?:\/\/|\/\/).*hubspot.+styles.min.css/g,
+      match: /(https?:\/\/|\/\/).*\/hub_generated\/.+styles.min.css/g,
       replace: 'styles.css',
     },
     {
-      match: /(https?:\/\/|\/\/).*hubspot.+scripts.min.js/g,
+      match: /(https?:\/\/|\/\/).*\/hub_generated\/.+scripts.min.js/g,
       replace: 'scripts.js',
     },
     {
-      match: /(https?:\/\/|\/\/).*hubspot.+image.png/g,
+      match: /(https?:\/\/|\/\/).*\/hub_generated\/.+image.png/g,
       replace: 'image.png',
     },
   ],
@@ -158,6 +158,12 @@ npx hs filemanager upload dist/images website
 - The `src` folder is for all your source files and **must include** the `images`, `scss` and `js` folders, otherwise the build tools will fail.
 
 ## Changelog
+
+### [0.0.4] - 2021-01-07
+
+#### Fixed
+
+- Updated the Browsersync `rewriteRules` regex so that it matches the changes HubSpot made in their URL when hosting assets.
 
 ### [0.0.3] - 2020-02-12
 
