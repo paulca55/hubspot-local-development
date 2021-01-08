@@ -6,9 +6,9 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist/{css/*,js/*,images/*}",
-    "scss": "node-sass --output-style compressed --source-map true -o ./dist/css ./src/scss",
-    "scripts": "parcel build ./src/js/scripts.js -d ./dist/js",
-    "autoprefixer": "postcss -u autoprefixer -m -r ./dist/css/**/*.css ",
+    "scss": "node-sass --output-style compressed --source-map true --output ./dist/css ./src/scss",
+    "scripts": "parcel build ./src/js/scripts.js --out-dir ./dist/js",
+    "autoprefixer": "postcss --use autoprefixer --map --replace ./dist/css/**/*.css ",
     "images": "imagemin ./src/images/* --out-dir=./dist/images",
     "server": "node browsersync.js",
     "css": "run-s scss autoprefixer",
