@@ -38,9 +38,11 @@ As part of the project's `package.json` the HubSpot CLI npm package will be inst
 
 1. In your current working directory run `npx hs init` in your terminal and follow the on screen prompts to create the `hubspot.config.yml` config file.
 2. Firstly, you’ll be guided to create a personal CMS access key to enable authenticated access to your account via the local development tools. You’ll be prompted to press `Enter` when you’re ready to open the **Personal CMS Access Key** page in your default browser. This page will allow you to view or generate your personal access key, if necessary. Copy your access key and paste it in the terminal.
-3. Next, you’ll enter a name for the account. This name is only seen and used by you, For example, you might use `DEV` if you're using a developer sandbox or `PROD` if you’re using a full customer account. This name will be used when running commands.
+3. Next, you’ll enter a name for the account. This name is only seen and used by you, For example, you might use `DEV` if you're using a developer sandbox or `PROD` if you’re using a full customer account. This name will be used when running commands (e.g. `npx hs upload --account=<name> <src> <dest>`)
 
-_Note: `hubspot.config.yml` supports multiple portal entries. The easiest way to add more portals after you already have a `hubspot.config.yml` file is to use `npx hs auth`._
+_Note: the `hubspot.config.yml` file supports multiple portal entries. The easiest way to add more portals after you already have a `hubspot.config.yml` file is to use `npx hs auth`._
+
+_Note: you can add `defaultPortal: <account_name>` the `hubspot.config.yml` file to set which account you'd like to be the default. You can exclude the `--account=` option from your commands, commands will reference that default portal._
 
 _Note: the `hubspot.config.yml` file has been added to the `.gitignore` file so that it won't be added to your git repo to help keep your API key safe._
 
