@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@hubspot/cms-cli": "^2.2.0",
+    "@hubspot/cms-cli": "^2.2.2",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.13",
     "clean-css-cli": "^4.3.0",
