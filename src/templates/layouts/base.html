@@ -1,0 +1,32 @@
+<!--
+    templateType: none
+-->
+<!doctype html>
+<html lang="{{ html_lang }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ page_meta.html_title }}</title>
+    {% if site_settings.favicon_src %}
+    <link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />
+    {% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}" />
+    <link rel="stylesheet" href="{{ get_asset_url('../../css/styles.css') }}">
+    <script src="{{ get_asset_url('../../js/scripts.js') }}" defer></script>
+    {{ standard_header_includes }}
+  </head>
+  <body {{ builtin_body_classes }}>
+    {% block header %}
+      {% module "banner" path="../../modules/global/banner" %}
+      {% global_partial path='../partials/global/header/header.html' %}
+    {% endblock header %}
+
+    {% block body %}
+    {% endblock body %}
+
+    {% block footer %}
+      {% global_partial path='../partials/global/footer/footer.html' %}
+    {% endblock footer %}
+
+    {{ standard_footer_includes }}
+  </body>
+</html>

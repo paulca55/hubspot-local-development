@@ -1,0 +1,8 @@
+@use 'variables' as vars;
+
+.site-banner {
+  background-color: vars.$color-grey-600;
+  padding: 0.8rem;
+  text-align: center;
+  color: #fff;
+}

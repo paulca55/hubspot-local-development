@@ -1,3 +1,3 @@
-import helloWorld from './helloWorld/helloWorld';
+import globalJS from './modules/global-js';
 
-helloWorld();
+globalJS();

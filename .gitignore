@@ -1,6 +1,7 @@
 .DS_Store
 Thumbs.db
 node_modules/
-hubspot.config.*
 .cache
+.vscode
+hubspot.config.*
 dist/
