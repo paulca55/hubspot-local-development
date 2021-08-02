@@ -1,0 +1,14 @@
+[
+  {
+    "id": "bd75b339-d536-4d0f-a68f-d2523bacc7f5",
+    "name": "banner_text",
+    "label": "Banner Text",
+    "required": true,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "This is the banner (global module)"
+  }
+]

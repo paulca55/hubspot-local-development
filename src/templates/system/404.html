@@ -1,0 +1,32 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: 404 error
+-->
+
+{% set template_css = '../../css/templates/system.css' %}
+{% extends '../layouts/base.html' %}
+
+{% block body %}
+<section class="inner-wrapper">
+  <div class="error-page" data-error="404">
+    {% module 'content'
+      path='@hubspot/rich_text',
+      html='<h1>Page not found.</h1>'
+    %}
+    {% module 'button'
+      path='../../modules/button',
+      button_text='Go Home'
+      link={
+        'url':
+          {
+            'type': 'EXTERNAL',
+            'href': '/'
+          },
+          'open_in_new_tab': false,
+          'no_follow': false
+      }
+    %}
+  </div>
+</section>
+{% endblock body %}
