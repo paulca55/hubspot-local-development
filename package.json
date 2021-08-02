@@ -1,44 +1,40 @@
 {
   "name": "hubspot-local-development",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "browserslist": [
-    ">0.25%"
+    "IE 11"
   ],
+  "config": {
+    "portalFolder": "website"
+  },
   "scripts": {
-    "clean": "rimraf ./dist/{css/*,js/*,images/*}",
-    "scss": "node-sass --output-style compressed --source-map true --output ./dist/css ./src/scss",
-    "scripts": "parcel build ./src/js/scripts.js --out-dir ./dist/js",
-    "autoprefixer": "postcss --use autoprefixer --map --replace ./dist/css/**/*.css ",
-    "images": "imagemin ./src/images/* --out-dir=./dist/images",
-    "server": "node browsersync.js",
-    "css": "run-s scss autoprefixer",
-    "build": "run-s clean css scripts images",
-    "watch:css": "onchange './src/scss/**/*.scss' -- run-s css",
-    "watch:js": "onchange './src/js/**/*.js' -- run-s scripts",
-    "watch:images": "onchange './src/images' -- run-s images",
-    "hs-watch": "npx hs watch ./dist dist",
-    "start": "run-p server hs-watch watch:*"
+    "js": "webpack",
+    "watch:js": "webpack --watch",
+    "scss": "sass --load-path=src/css/abstracts src/modules:src/modules src/css/:src/css/ --no-error-css --color --no-source-map --update",
+    "watch:scss": "sass --load-path=src/css/abstracts src/modules:src/modules src/css/:src/css/ --no-error-css --color --no-source-map --update --watch",
+    "watch:hubspot": "npx hs watch ./src $npm_package_config_portalFolder",
+    "build": "run-p js scss",
+    "start": "run-p watch:*"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@hubspot/cms-cli": "^2.2.2",
-    "autoprefixer": "^9.8.6",
-    "browser-sync": "^2.26.13",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "imagemin-cli": "^6.0.0",
-    "node-sass": "^4.14.1",
+    "@babel/preset-env": "^7.15.6",
+    "@hubspot/cli": "^3.0.9",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.1.1",
-    "parcel-bundler": "^1.12.4",
-    "postcss-cli": "^6.1.3",
-    "prettier": "^1.19.1",
-    "rimraf": "^3.0.2",
-    "shelljs": "^0.8.4",
-    "stylelint": "^12.0.1",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-recommended": "^3.0.0",
-    "stylelint-prettier": "^1.1.2"
+    "prettier": "^2.4.1",
+    "sass": "^1.39.2",
+    "style-loader": "^3.2.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
   }
 }

@@ -1,0 +1,37 @@
+<!--
+    templateType: none
+-->
+<!doctype html>
+<html lang="{{ html_lang }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ page_meta.html_title }}</title>
+    {% if site_settings.favicon_src %}
+    <link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />
+    {% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}" />
+    {{ require_css(get_asset_url("../../css/styles.css")) }}
+    {# This is intended to be used if a template requires template specific style sheets #}
+    {% if template_css %}
+      {{ require_css(get_asset_url(template_css)) }}
+    {% endif %}
+    {{ require_css(get_asset_url("../../css/theme-overrides.css")) }}
+    {{ require_js(get_asset_url("../../js/scripts.js"), { position: "head", defer: true }) }}
+    {{ standard_header_includes }}
+  </head>
+  <body {{ builtin_body_classes }}>
+    {% block header %}
+      {% module "banner" path="../../modules/global/banner" %}
+      {% global_partial path='../partials/global/header.html' %}
+    {% endblock header %}
+
+    {% block body %}
+    {% endblock body %}
+
+    {% block footer %}
+      {% global_partial path='../partials/global/footer.html' %}
+    {% endblock footer %}
+
+    {{ standard_footer_includes }}
+  </body>
+</html>
