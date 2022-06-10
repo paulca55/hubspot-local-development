@@ -103,7 +103,7 @@ You can now use the `@use` command in your SCSS files which address those issues
 `src/css/abstracts/_variables.scss` file
 
 ```scss
-$primary-color: 576px;
+$primary-color: 'bada55';
 ```
 
 `src/modules/module/_module.scss` file
@@ -139,6 +139,7 @@ The `js-modules/scripts.js` file (and any imported ES Modules) will be bundled a
 In each HubSpot module folder you will find a `module.js` file where you'll write your JavaScript for that module.
 
 _**Note**: The `module.js` file doesn't currently support transpiling to older JavaScript code, so the code you write is what gets ran in the browser._
+
 _**Note**: The `module.js` file doesn't currently support ES Module bundling using this tool._
 
 ## Manually uploading files to HubSpot
