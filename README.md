@@ -2,6 +2,8 @@
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue)
 
+> ❗️This repository is no longer maintained.
+
 _**Disclaimer**: This is not an official HubSpot project and is in no way affiliated with HubSpot._
 
 _**Note**: This project has only been tested on MacOS._
